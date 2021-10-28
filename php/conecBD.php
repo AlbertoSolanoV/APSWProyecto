@@ -9,7 +9,7 @@
             try{
              
               $conexion = new PDO("mysql:host=".servidor."; dbname=".nombre_bd, usuario, password, $opciones); 
-                //echo "Conexion Exitosa <br>";
+            
                 return $conexion;
             }catch(Exception $e){
                 die("El error de Conexion es: ".$e->getMessage());

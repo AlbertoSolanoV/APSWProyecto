@@ -54,7 +54,7 @@
 
 
                                     <v-btn block elevation="2" icon large outlined tile @click="info.show = !info.show">
-                                        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                                        <v-icon>{{ info.show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
                                     </v-btn>
                                 </v-card-actions>
 
@@ -114,7 +114,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
-    <script src="../js/HorarioAlumnosApp.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+    <script src="../js/HorarioEstApp.js"></script>
 </body>
 
 </html>

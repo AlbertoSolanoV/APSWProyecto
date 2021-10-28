@@ -21,40 +21,40 @@
                     <ul>
                         <li class="dropdown">
                             <a href="javascript:void(0)" class="dropbtn" style="color:white">Horario</a>
-                          <div class="dropdown-content">
-                            <a onclick="location.href='HorarioAlumnos.html'" style="color:white">Estudiante</a>
-                          </div>
+                            <div class="dropdown-content">
+                                <a onclick="location.href='HorarioProfe.html'" style="color:white">Profesor</a>
+                            </div>
                         </li>
                         <li class="dropdown" style="float:right">
-                       <a href="javascript:void(0)" class="dropbtn"  style="color:white">CUENTA</a>
-                        <div class="dropdown-content">
-                            <a  style="color:white"  onclick="location.href='Login.html'">Cerrar Seccíon</a>
-                          </div>
+                            <a href="javascript:void(0)" class="dropbtn" style="color:white">CUENTA</a>
+                            <div class="dropdown-content">
+                                <a style="color:white" onclick="location.href='Login.html'">Cerrar Seccíon</a>
+                            </div>
                         </li>
-                      </ul>
+                    </ul>
                 </div>
 
-                <div class="encabezado"> Horario Estudiantes </div>
+                <div class="encabezado"> Horario Profesor </div>
 
 
                 <v-container grid-list-xl>
                     <v-layout row wrap>
-                        <v-flex md4 v-for="info of horarios">
+                        <v-flex md4 v-for="info of Horario">
 
 
-                            <v-card class="mx-auto" color="teal lighten-4" max-width="500" >
+                            <v-card class="mx-auto" color="teal lighten-4" max-width="500">
                                 <v-card-title>
-                                    {{info.Curso}}
+                                    {{info.materia}}
                                 </v-card-title>
                                 <v-card-subtitle>
-                                    {{info.dia}} {{info.hora_inicio}} {{info.hora_fin}} 
+                                    {{info.dia}}  / {{info.hora_inicio}} - {{info.hora_fin}}
                                 </v-card-subtitle>
 
                                 <v-card-actions>
 
 
-                                    <v-btn block elevation="2" icon large outlined tile @click="info.show = !info.show">
-                                        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                                    <v-btn block elevation="2" icon large outlined tile @click="info.show = !info.show, info.showEstu =false, info.showUbi =false">
+                                        <v-icon>{{ info.show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
                                     </v-btn>
                                 </v-card-actions>
 
@@ -62,33 +62,35 @@
                                     <div v-show="info.show">
                                         <v-divider></v-divider>
                                         <v-card-text>
-                                            Grupo: {{info.Grupo }}
+                                            Grupo: {{info.id_grupo}}
                                         </v-card-text>
                                         <v-divider></v-divider>
                                         <v-card-text>
-                                            Aula: {{info.Aula }}
+                                            Aula: {{info.aula}}
                                         </v-card-text>
                                         <v-divider></v-divider>
-                                        <v-btn text block @click="info.showProfesor = !info.showProfesor" class="default" >Profesor que imparte el Curso</v-btn>
+                                        <v-btn text block @click="info.showEstu = !info.showEstu, grupo=info.codgrupo " class="default">Estudiantes</v-btn>
                                         <v-divider></v-divider>
-                                        <v-btn text block @click="info.showUbicacion = !info.showUbicacion" class="default">Ubicacion del  Aula: {{info.Aula}}</v-btn>
+                                        <v-btn text block @click="info.showUbi = !info.showUbi" class="default">Ubicacion: {{info.Edificio}}</v-btn>
                                         <v-divider></v-divider>
                                     </div>
                                 </v-expand-transition>
                                 <v-expand-transition>
-                                    <div v-show="info.showProfesor">
-                                     <v-divider></v-divider>
-                                        <v-card-text>
-                                            Profesor: {{info.Profesor}}
+                                    <div v-show="info.showEstu">
+                                        <v-divider></v-divider>
+                                        <v-card-text v-for="info of Estudiante">
+                                          
+                                            {{info.id}} - {{info.nomb}}
+
                                         </v-card-text>
                                     </div>
                                 </v-expand-transition>
 
                                 <v-expand-transition>
-                                    <div v-show="info.showUbicacion">
+                                    <div v-show="info.showUbi">
                                         <v-card-text>
-                                           Ubicación: Edificio de {{info.Edificio}} {{info.Ubicacion}} 
-                                        </v-card-text>                                      
+                                            {{ info.ubicacion }}
+                                        </v-card-text>
                                     </div>
                                 </v-expand-transition>
                             </v-card>
@@ -114,7 +116,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
-    <script src="../js/HorarioAlumnosApp.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+    <script src="../js/appHProfe.js"></script>
 </body>
 
 </html>

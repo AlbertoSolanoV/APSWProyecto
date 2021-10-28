@@ -1,8 +1,6 @@
-var url = "../bd/crud.php";
-var url2 = "../bd/crud2.php";
 let params = new URLSearchParams(location.search);
 var contract = params.get('id');
-var nombree = params.get('id2');
+
 
 new Vue({
     el: '#app',
@@ -14,13 +12,14 @@ new Vue({
         }
     },
     data: {
+        horarios: [],
         
-        estadoji:0,
+          array: [],
+          id: contract,
         snackbar: false,
         textSnack: 'texto snackbar',
         dialog: false,
         editedIndex: -1,
-        nombredificio: nombree,
         editado: {
             nombre: '',
             ubicacion: '',
@@ -70,7 +69,7 @@ new Vue({
         editado2: {
             nombreaula: '',
             capacidad: '',
-            edificio: contract,
+            edificio: '',
             tipo: '',
             ubicacion: '',
             estado: '',
@@ -87,7 +86,7 @@ new Vue({
             text: 'Edificio',
             align: 'left',
             sortable: false,
-            value: nombree,
+            value: '',
         },
         {
             text: 'Nombre Aula',
@@ -239,29 +238,15 @@ new Vue({
 
     created() {
         this.get_contacts();
-        this.listaraulas();
+        this.listarhorario();
     },
     methods: {
 
-
-            activado:function (cod) {
-               console.log("activado"+cod);
-               fetch("../php/cambiarestado.php?a=" + cod)
-                .then(response => {
-                this.dialog = false;
-                this.snackbar = true;
-                this.textSnack = '¡Se cambio el estado con exito!';
-                this.get_contacts();
-            });
-            },
-
-
-
         //Procedimiento Listar moviles  
-        listaraulas: function () {
-            fetch("../php/aulastabla.php?a=" + contract)
+         listarhorario: function () {
+            fetch("../php/horarioAula.php?a=" + contract)
                 .then(response => response.json())
-                .then(json => { this.aulas = json.contactos })
+                .then(json => { this.horarios = json.contactos })
         },
         get_contacts: function () {
             fetch("../php/edificiotarjetas.php")
@@ -277,7 +262,7 @@ new Vue({
                 ubicacion: this.defaultItem.Ubicacion,
                 cantidad: this.defaultItem.Cantidad,
                 pisos: this.defaultItem.Pisos,
-                estado: this.estadoji,
+                estado: this.defaultItem.Estado,
                 foto: this.defaultItem.Foto
             }).then(response => {
                 this.dialog = false;
@@ -285,7 +270,6 @@ new Vue({
                 this.textSnack = '¡Se inserto con exito!';
                 this.get_contacts();
             });
-            this.estadoji="0",
             this.defaultItem.Nombre = "",
                 this.defaultItem.Ubicacion = "",
                 this.defaultItem.Cantidad = "",
@@ -439,4 +423,3 @@ new Vue({
     }
 
 })
-

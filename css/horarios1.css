@@ -90,20 +90,37 @@ ul {
 
 .tabla {
     width: 100%;
+    height: auto;
     margin: 0 auto;
     padding-top: 5%;
     padding-bottom: 5%;
-    height: auto;
 }
 
 .tabla th {
     background-color: black;
+    color:white;
     padding: 10px;
     color: #fff;
     height: 25px;
 }
 
+tr.disponible td{
+    background-color: #5B8BDE;
+    color:white;
+    
+}
 
+tr.utilizada td{
+    background-color: #73DE58;
+    color:white;
+    
+}
+
+tr.sobrepasa td{
+    background-color: #DE615B;
+    color:white;
+    
+}
 p{
   font-size: 12px;
   text-transform: capitalize;
