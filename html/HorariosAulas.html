@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>APSW C3-2020</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" type = "text/css" href="../css/horarios.css"/>
+</head>
+<body>
+  <div id="app">
+    <v-app>
+        <template>
+            <ul>
+                <li class="dropdown">
+                  <a href="javascript:void(0)" class="dropbtn" style="color:white">DISTRIBUCIÓN</a>
+                  <div class="dropdown-content">
+                    <a href="edificios2.html" style="color:white">Edificios y aulas</a>
+                    <a href="grupos.html" style="color:white" >Grupos</a>
+                  </div>
+                </li>
+                <li class="dropdown" style="float:right">
+                  <a href="javascript:void(0)" class="dropbtn" style="color:white">CUENTA</a>
+                  <div class="dropdown-content">
+                    <a style="color:white" onclick="location.href='login.html'">Cerrar Seccíon</a>
+                  </div>
+                </li>
+              </ul>
+            <div class="contenido">
+                <div  class="encabezado">Horarios del Aula</div>  
+                <br>
+                <h1>Horarios del Aula</h1>
+                <br>
+                <div>
+                    <v-row>
+                        <v-col cols="12" sm="6" md="4">
+                            <v-btn color = "#00709e" depressed>Disponible</v-btn>
+                        </v-col>
+                        <v-col cols="12" sm="6" md="4">
+                            <v-btn color = "#007520" depressed>Utilizada</v-btn>
+                        </v-col>
+                        <v-col cols="12" sm="6" md="4">
+                            <v-btn color = "#960014" depressed>Sobrepasa la Capacidad</v-btn>
+                        </v-col>
+                    </v-row>
+                    <br>
+                    <v-simple-table>
+                        <template v-slot:default>
+                          <thead>
+                            <tr>
+                              <th class="text-center">HORA</th>
+                              <th class="text-center">LUNES</th>
+                              <th class="text-center">MARTES</th>
+                              <th class="text-center"> MIÉRCOLES</th>
+                              <th class="text-center">JUEVES</th>
+                              <th class="text-center">VIERNES</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                                <td data-label="HORA">8:00 - 11:40</td>
+                                <td>
+                                    <v-card class="mx-auto" width="160" height="175" color = "#007520">
+                                        <v-card-text><p>Aula 08</p><p>Curso: Contabilidad Intermedia </p><p>Profesor: Ana Calderón Pizarro</p></v-card-text>
+                                    </v-card>
+                                </td>
+                                <td>
+                                    <v-card class="mx-auto" width="160" height="175" color = "#00709e">
+                                        <v-card-text><p>Aula 08</p><p>Curso: NA</p><p>Profesor: NA</p></v-card-text>
+                                    </v-card>
+                                </td>
+                                <td>
+                                    <v-card class="mx-auto" width="160" height="175" color = "#00709e">
+                                        <v-card-text><p>Aula 08</p><p>Curso: NA</p><p>Profesor: NA</p></v-card-text>
+                                    </v-card>
+                                </td>
+                                <td>
+                                    <v-card class="mx-auto" width="160" height="175" color = "#007520">
+                                        <v-card-text><p>Aula 08</p><p>Curso: Inglés para Negocios II</p><p>Profesor: Rita Leiva Picado</p></v-card-text>
+                                    </v-card>
+                                </td>
+                                <td>
+                                    <v-card class="mx-auto" width="160" height="175" color = "#960014">
+                                        <v-card-text><p>Aula 08</p><p>Curso: Estadística Descriptiva</p><p>Profesor: Nathalie Leitón Sancho</p></v-card-text>
+                                    </v-card>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-label="HORA">13:00 - 16:40</td>
+                                <td>
+                                    <v-card class="mx-auto" width="160" height="175" color = "#00709e">
+                                        <v-card-text><p>Aula 08</p><p>Curso: NA</p><p>Profesor: NA</p></v-card-text>
+                                    </v-card>
+                                </td>
+                                <td>
+                                    <v-card class="mx-auto" width="160" max-height="175" color = "#007520">
+                                        <v-card-text><p>Aula 08</p><p>Curso: Legislación Empresarial</p><p>Profesor: Erick Alpizar Picado</p></v-card-text>
+                                    </v-card>
+                                </td>
+                                <td>
+                                    <v-card class="mx-auto" width="160" height="175" color = "#007520">
+                                        <v-card-text><p>Aula 08</p><p>Curso: Gerencia y Estrategia </p><p>Profesor: J.Alfonso Espinoza González</p></v-card-text>
+                                    </v-card>
+                                </td>
+                                <td>
+                                    <v-card class="mx-auto" width="160" height="175" color = "#960014">
+                                        <v-card-text><p>Aula 08</p><p>Curso: Adm. de Rec. Humanos</p><p>Profesor: Sergio Aguilar Solano</p></v-card-text>
+                                    </v-card>
+                                </td>
+                                <td>
+                                    <v-card class="mx-auto" width="160" height="175" color = "#00709e">
+                                        <v-card-text><p>Aula 08</p><p>Curso: NA</p><p>Profesor: NA</p></v-card-text>
+                                    </v-card>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-label="HORA">18:00 - 21:30</td>
+                                <td>
+                                    <v-card class="mx-auto" width="160" height="175" color = "#00709e">
+                                        <v-card-text><p>Aula 08</p><p>Curso: NA</p><p>Profesor: NA</p></v-card-text>
+                                    </v-card>
+                                </td>
+                                <td>
+                                    <v-card class="mx-auto" width="160" height="175" color = "#00709e">
+                                        <v-card-text><p>Aula 08</p><p>Curso: NA</p><p>Profesor: NA</p></v-card-text>
+                                    </v-card>
+                                </td>
+                                <td>
+                                    <v-card class="mx-auto" width="160" height="175" color = "#00709e">
+                                        <v-card-text><p>Aula 08</p><p>Curso: NA</p><p>Profesor: NA</p></v-card-text>
+                                    </v-card>
+                                </td>
+                                <td>
+                                    <v-card class="mx-auto" width="160" height="175" color = "#007520">
+                                        <v-card-text><p>Aula 08</p><p>Curso: Administración de Proyectos</p><p>Profesor: Guiselle Hidalgo Montoya</p></v-card-text>
+                                    </v-card>
+                                </td>
+                                <td>
+                                    <v-card class="mx-auto" width="160" height="175" color = "#007520">
+                                        <v-card-text><p>Aula 08</p><p>Curso: Gerencia y Estrategia</p><p>Profesor: Eugenio Hernández Palma</p></v-card-text>
+                                    </v-card>
+                                </td>
+                            </tr>
+                          </tbody>
+                        </template>
+                      </v-simple-table>
+               </div>   
+            </div>
+
+            <v-footer style="margin-top: 175px; background-color: #253339; height: 100px">
+                <v-row justify="center">
+                    <v-col class=" text-center white--text" cols="12">{{ new Date().getFullYear() }} -
+                        <strong>Administración y Programación de Sitios Web CUC </strong>
+                    </v-col>
+                </v-row>
+            </v-footer >
+        </template>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="../js/HorarioAulasApp.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>APSW C3-2020</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" type = "text/css" href="../css/oferta.css"/>
+</head>
+<body>
+  <div id="app">
+    <v-app>
+        <template>
+          <ul>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn" style="color:white">Oferta Academica</a>
+              
+            </li>
+            <li class="dropdown" style="float:right">
+           <a href="javascript:void(0)" class="dropbtn"  style="color:white">CUENTA</a>
+            <div class="dropdown-content">
+                <a  style="color:white"  onclick="location.href='login.html'">Cerrar Seccíon</a>
+              </div>
+            </li>
+          </ul>
+
+            <div class="contenido">
+                <div  class="encabezado">Oferta académica</div>  
+                <br>
+               <h1>Oferta académica </h1> <button @click="dialog = !dialog" class="BotonCirculo1"><i class="fas fa-stopwatch">+</i></button>
+                <br>
+                <div>
+                    <v-simple-table class = "tabla">
+                        <template>
+                            <thead>
+                            <tr>
+                                <th>Oferta Académica</th>
+                                <th>Fecha Inicial</th>
+                                <th>Fecha Final</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="item in tabla":key="item.oferta">
+                            
+                                <td>{{item.oferta}}</td>
+                                <td>{{item.inicio}}</td>
+                                <td>{{item.final}}</td>
+                            </tr>
+                            </tbody>
+
+                        </template>
+                    </v-simple-table>
+               </div>   
+            </div>
+
+            <v-dialog v-model="dialog" max-width="800px">
+                <template v-slot:activator="{ on }"></template>
+                <v-card>
+                    <v-card-title style="background-color: #00796B;color:white;">
+                      <span class="headline">Crear Oferta Academica</span>
+                    </v-card-title>
+                    <v-card-text>
+                      <v-container>
+                        <v-row>
+                            <v-col cols="12" sm="9" md="4">
+                              <v-text-field label="Oferta académica" outlined color="#00796b"></v-text-field>
+                            </v-col>
+                            <v-col cols="12"sm="6"md="4">
+                                <v-menu ref="menu1" v-model="menu1" :close-on-content-click="false" :return-value.sync="date" 
+                                transition="scale-transition" offset-y min-width="290px">
+                                  <template v-slot:activator="{ on, attrs }">
+                                    <v-text-field v-model="date" label="Fecha Inicial" prepend-icon="mdi-calendar" 
+                                    readonly v-bind="attrs"v-on="on"></v-text-field>
+                                  </template>
+                                  <v-date-picker v-model="date" no-title scrollable>
+                                    <v-spacer></v-spacer>
+                                    <v-btn text color="#00796b" @click="menu1 = false">Cancelar</v-btn>
+                                    <v-btn text color="#00796b" @click="$refs.menu1.save(date)">Seleccionar</v-btn>
+                                  </v-date-picker>
+                                </v-menu>
+                              </v-col>
+                              <v-col cols="12"sm="6"md="4">
+                                <v-menu ref="menu2" v-model="menu2" :close-on-content-click="false" :return-value.sync="date" 
+                                transition="scale-transition" offset-y min-width="290px">
+                                  <template v-slot:activator="{ on, attrs }">
+                                    <v-text-field v-model="date" label="Fecha Final" prepend-icon="mdi-calendar" 
+                                    readonly v-bind="attrs"v-on="on"></v-text-field>
+                                  </template>
+                                  <v-date-picker v-model="date" no-title scrollable>
+                                    <v-spacer></v-spacer>
+                                    <v-btn text color="#00796b" @click="menu2 = false">Cancelar</v-btn>
+                                    <v-btn text color="#00796b" @click="$refs.menu2.save(date)">Seleccionar</v-btn>
+                                  </v-date-picker>
+                                </v-menu>
+                              </v-col>
+                          </v-row>
+                          <v-file-input v-model="archivos" color="#00796b" counter label="Adjuntar archivo de la oferta académica" 
+                          multiple prepend-icon="mdi-paperclip" outlined :show-size="1000">
+                              <template v-slot:selection="{ index, text }">
+                                <v-chip v-if="index < 2" color="#00796b" dark label small>{{ text }}</v-chip>
+                                <span v-else-if="index === 2" class="overline grey--text text--darken-3 mx-2"> +{{ archivos.length - 2 }} Archivo(s)</span>
+                              </template>
+                            </v-file-input>
+                      </v-container>
+                    </v-card-text>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn color="blue-grey" class="ma-2 white--text" @click="dialog=!dialog" >Cancelar</v-btn>
+                      <v-btn color="teal accent-4" class="ma-2 white--text" @click="guardar">Guardar</v-btn>
+                    </v-card-actions>
+                  </v-card>
+            </v-dialog>
+
+            <v-footer style="margin-top: 175px; background-color: #253339; height: 100px">
+                <v-row justify="center">
+                    <v-col class=" text-center white--text" cols="12">{{ new Date().getFullYear() }} -
+                        <strong>Administración y Programación de Sitios Web CUC </strong>
+                    </v-col>
+                </v-row>
+            </v-footer >
+        </template>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="../js/VistaOfertaApp.js"></script>
+
+
+</body>
+</html>

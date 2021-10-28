@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>APSW C3-2020</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" type = "text/css" href="../css/login.css"/>
+</head>
+<body>
+  <div id="app">
+    <v-app>
+        <template>
+            <div class="contenido">
+              <br>
+              <br>
+              <br>
+              <br>
+                <v-row>
+                  <v-col cols="12"sm="4"md="2">
+                  </v-col>
+                  <v-col cols="12"sm="8"md="4">
+                    <v-card class="mx-auto" width="500px" height="400px" color ="#25333a">
+                      <v-card class="mx-auto" max-width="800" >
+                        <div class="cuadro1">
+                          Organización<br>
+                          Organiza de forma objetiva los horarios para centros<br>
+                          educativos de cualquier complejidad, aulas, profesores,<br>
+                          sesiones, etc.<br>
+                        </div>
+                      </v-card>
+                      <br>
+                      <br>
+                      <v-card class="mx-auto" max-width="800">
+                        <div class="cuadro2">
+                          Compatibilidad<br>
+                          GHC es compatible con la mayoría de las aplicaciones de<br>
+                          gestión académica utilizadas por los centros educativos.<br>
+                        </div>
+                      </v-card>
+                      <br>
+                      <br>
+                      <v-card class="mx-auto" max-width="800" >
+                        <div class="cuadro3">
+                         Optimización de recursos<br>
+                          Compagina los requisitos académicos, con los recursos<br>
+                          humanos y materiales del centro docente.<br>
+                        </div>
+                      </v-card>
+                      <br>
+                      <br>
+                    </v-card>
+                    <v-spacer></v-spacer>
+                  </v-col>
+                  <v-col cols="12"sm="8"md="4">
+                    <v-card class="mx-auto" width="500px" height="400px" color ="white">
+                      <div class="login">
+                        Inicio de Sesión
+                       </div>
+                       <br>
+                       <br>
+                       <v-col>
+                        <v-text-field label="Nombre de Usuario" outlined color="#00796b"></v-text-field>
+                       </v-col>
+                       <v-col>
+                        <v-text-field label="Contraseña" outlined color="#00796b" type="pass"></v-text-field>
+                      </v-col>
+                      <v-col cols="12"sm="9"md="6">
+                        <v-btn class ="Btn1">Ingresar</v-btn>
+                      </v-col>
+                    </v-card>
+                  </v-col>
+                  <v-col cols="12"sm="4"md="2">
+                  </v-col>
+                </v-row>
+            </div>
+        </template>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="../js/LoginApp.js"></script>
+
+</body>
+</html>

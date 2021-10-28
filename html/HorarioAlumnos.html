@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" type="text/css" href="../css/solicitudes.css" />
+
+    <title>Solicitudes</title>
+</head>
+
+<body>
+    <div id="app">
+        <v-app>
+            <v-main>
+                <div>
+                    <ul>
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropbtn" style="color:white">Horario</a>
+                          <div class="dropdown-content">
+                            <a onclick="location.href='HorarioAlumnos.html'" style="color:white">Estudiante</a>
+                          </div>
+                        </li>
+                        <li class="dropdown" style="float:right">
+                       <a href="javascript:void(0)" class="dropbtn"  style="color:white">CUENTA</a>
+                        <div class="dropdown-content">
+                            <a  style="color:white"  onclick="location.href='login.html'">Cerrar Seccíon</a>
+                          </div>
+                        </li>
+                      </ul>
+                </div>
+
+                <div class="encabezado"> Horario Estudiantes </div>
+
+
+                <v-container grid-list-xl>
+                    <v-layout row wrap>
+                        <v-flex md4 v-for="info of HorarioEstudiantes">
+
+
+                            <v-card class="mx-auto" color="teal lighten-4" max-width="500" >
+                                <v-card-title>
+                                    {{info.Materia}}
+                                </v-card-title>
+                                <v-card-subtitle>
+                                    {{info.Horario}}
+                                </v-card-subtitle>
+
+                                <v-card-actions>
+
+
+                                    <v-btn block elevation="2" icon large outlined tile @click="info.show = !info.show, info.showprofe =false">
+                                        <v-icon>{{ info.show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                                    </v-btn>
+                                </v-card-actions>
+
+                                <v-expand-transition>
+                                    <div v-show="info.show">
+                                        <v-divider></v-divider>
+                                        <v-card-text>
+                                            Grupo: {{info.Grupo}}
+                                        </v-card-text>
+                                        <v-divider></v-divider>
+                                        <v-card-text>
+                                            Aula: {{info.Aula}}
+                                        </v-card-text>
+                                        <v-divider></v-divider>
+                                        <v-btn text block @click="info.showprofe = !info.showprofe, idhora=info.id, darNombreProfe()" class="default" >Profesor: {{info.Profesor}}</v-btn>
+                                        <v-divider></v-divider>
+                                        <v-btn text block @click="info.showubi = !info.showubi" class="default">Ubicacion: {{info.Ubicacion}}</v-btn>
+                                        <v-divider></v-divider>
+                                    </div>
+                                </v-expand-transition>
+                                <v-expand-transition>
+                                    <div v-show="info.showprofe">
+                                     <v-divider></v-divider>
+                                        <v-card-text>
+                                            Grupo: {{info.Grupo}}
+                                        </v-card-text>
+                                    </div>
+                                </v-expand-transition>
+
+                                <v-expand-transition>
+                                    <div v-show="info.showubi">
+                                      
+                                        <v-card-text>
+                                            
+                                           <iframe width="100%" height="100%" v-bind:src="src()"></iframe>
+                                        </v-card-text>                                      
+                                    </div>
+                                </v-expand-transition>
+                                <v-expand-transition>
+                                    <div v-show="info.showprofe">
+                                     <v-divider></v-divider>
+                                        <v-card-text>
+                                            Grupo: {{info.Grupo}}
+                                        </v-card-text>
+                                    </div>
+                                </v-expand-transition>
+                            </v-card>
+                        </v-flex>
+                    </v-layout>
+                </v-container>
+            </v-main>
+        </v-app>
+
+        <div>
+            <v-footer style="margin-top: 175px; background-color: #253339; height: 100px">
+                <v-row justify="center">
+                    <v-col class=" text-center white--text" cols="12">{{ new Date().getFullYear() }} -
+                        <strong>Administración y Programación de Sitios Web CUC </strong>
+                    </v-col>
+                </v-row>
+            </v-footer>
+        </div>
+
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="../js/appHEstudiantes.js"></script>
+</body>
+
+</html>
